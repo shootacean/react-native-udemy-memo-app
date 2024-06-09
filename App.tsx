@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
+// biome-ignore lint: lint/style/noDefaultExport
 export default function App() {
 	return (
 		<View style={styles.container}>
