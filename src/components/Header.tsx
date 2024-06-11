@@ -3,12 +3,12 @@ import { StyleSheet, Text, View } from "react-native";
 
 export const Header = () => {
 	return (
-        <View style={styles.header}>
-            <View style={styles.headerInner}>
-                <Text style={styles.headerTitle}>Memo App</Text>
-                <Text style={styles.headerRight}>ログアウト</Text>
-            </View>
-        </View>
+		<View style={styles.header}>
+			<View style={styles.headerInner}>
+				<Text style={styles.headerTitle}>Memo App</Text>
+				<Text style={styles.headerRight}>ログアウト</Text>
+			</View>
+		</View>
 	);
 };
 
