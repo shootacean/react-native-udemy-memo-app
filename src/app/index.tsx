@@ -1,13 +1,15 @@
 import "expo-router/entry";
-import { Text, View, StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export const Index = () => {
 	return (
 		<View style={styles.container}>
 			{/* Header */}
-			<View>
-				<Text>Memo App</Text>
-				<Text>ログアウト</Text>
+			<View style={styles.header}>
+				<View style={styles.headerInner}>
+					<Text style={styles.headerTitle}>Memo App</Text>
+					<Text style={styles.headerRight}>ログアウト</Text>
+				</View>
 			</View>
 			{/* List */}
 			<View>
@@ -34,10 +36,29 @@ export const Index = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
+		backgroundColor: "#FFFFFF",
+	},
+	header: {
+		height: 104,
+		backgroundColor: "#467FD3",
+		justifyContent: "flex-end",
+	},
+	headerInner: {
 		alignItems: "center",
-		justifyContent: "center",
-	}
+	},
+	headerTitle: {
+		marginBottom: 8,
+		fontSize: 24,
+		lineHeight: 32,
+		color: "#FFFFFF",
+		fontWeight: "bold",
+	},
+	headerRight: {
+		position: "absolute",
+		right: 19,
+		bottom: 16,
+		color: "rgba(255, 255, 255, 0.8)",
+	},
 });
 
 export default Index;
