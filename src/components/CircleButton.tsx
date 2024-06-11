@@ -1,17 +1,15 @@
 import "expo-router/entry";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 interface CircleButtonProps {
-    children: ReactNode;
+	children: ReactNode;
 }
 
-const CircleButton = ({children}: CircleButtonProps) => {
+const CircleButton = ({ children }: CircleButtonProps) => {
 	return (
 		<View style={styles.circleButton}>
-			<Text style={styles.circleButtonLabel}>
-                {children}
-            </Text>
+			<Text style={styles.circleButtonLabel}>{children}</Text>
 		</View>
 	);
 };
