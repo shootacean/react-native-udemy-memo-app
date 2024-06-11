@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { StyleSheet, Text, View, type TextStyle } from "react-native";
+import { StyleSheet, Text, type TextStyle, View } from "react-native";
 
 interface HelloProps {
 	children: ReactNode;
@@ -7,7 +7,7 @@ interface HelloProps {
 	style?: TextStyle;
 }
 
-export const Hello = ({children, bang, style}: HelloProps) => {
+export const Hello = ({ children, bang, style }: HelloProps) => {
 	return (
 		<View>
 			<Text style={[styles.text, style]}>
