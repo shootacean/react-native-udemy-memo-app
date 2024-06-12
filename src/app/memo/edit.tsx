@@ -1,4 +1,9 @@
-import { StyleSheet, TextInput, View } from "react-native";
+import {
+	KeyboardAvoidingView,
+	StyleSheet,
+	TextInput,
+	View,
+} from "react-native";
 
 import CircleButton from "../../components/CircleButton";
 import Header from "../../components/Header";
@@ -6,7 +11,7 @@ import Icon from "../../components/Icon";
 
 const Edit = () => {
 	return (
-		<View style={styles.container}>
+		<KeyboardAvoidingView behavior="height" style={styles.container}>
 			<Header />
 			<View style={styles.inputContainer}>
 				<TextInput
@@ -18,7 +23,7 @@ const Edit = () => {
 			<CircleButton>
 				<Icon name="check" size={40} color="#ffffff" />
 			</CircleButton>
-		</View>
+		</KeyboardAvoidingView>
 	);
 };
 
