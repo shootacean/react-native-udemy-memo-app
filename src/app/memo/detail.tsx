@@ -1,5 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
+import { Feather } from "@expo/vector-icons";
 import CircleButton from "../../components/CircleButton";
 import { Header } from "../../components/Header";
 
@@ -22,7 +23,7 @@ const Detail = () => {
 				</Text>
 			</ScrollView>
 			<CircleButton style={{ top: 160, right: 40, bottom: "auto" }}>
-				-
+				<Feather name="edit-2" size={32} />
 			</CircleButton>
 		</View>
 	);
