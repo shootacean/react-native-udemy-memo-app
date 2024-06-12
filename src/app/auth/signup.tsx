@@ -9,14 +9,14 @@ const Login = () => {
 			<Header />
 			<View style={styles.inner}>
 				<View>
-					<Text style={styles.title}>Log In</Text>
+					<Text style={styles.title}>Sign Up</Text>
 					<TextInput style={styles.input} value="Email" />
 					<TextInput style={styles.input} value="Password" />
 				</View>
-				<Button>Log in</Button>
+				<Button>Sign up</Button>
 				<View style={styles.footer}>
-					<Text style={styles.footerText}>Not registered?</Text>
-					<Text style={styles.footerLink}>Sign up here!</Text>
+					<Text style={styles.footerText}>Already registered?</Text>
+					<Text style={styles.footerLink}>Log in here!</Text>
 				</View>
 			</View>
 		</View>
