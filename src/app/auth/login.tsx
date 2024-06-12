@@ -1,0 +1,76 @@
+import { StyleSheet, Text, TextInput, View } from "react-native";
+
+import Header from "../../components/Header";
+
+const Login = () => {
+	return (
+		<View style={styles.container}>
+			<Header />
+			<View style={styles.inner}>
+				<View>
+					<Text style={styles.title}>Log In</Text>
+					<TextInput style={styles.input} value="Email" />
+					<TextInput style={styles.input} value="Password" />
+				</View>
+				<View style={styles.button}>
+					<Text style={styles.buttonLabel}>Submit</Text>
+				</View>
+				<View style={styles.footer}>
+					<Text style={styles.footerText}>Not registered?</Text>
+					<Text style={styles.footerLink}>Sign up here!</Text>
+				</View>
+			</View>
+		</View>
+	);
+};
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+	},
+	inner: {
+		paddingVertical: 24,
+		paddingHorizontal: 27,
+	},
+	title: {
+		fontSize: 24,
+		lineHeight: 32,
+		fontWeight: "bold",
+		marginBottom: 24,
+	},
+	input: {
+		borderWidth: 1,
+		borderColor: "#DDDDDD",
+		backgroundColor: "#FFFFFF",
+		height: 48,
+		padding: 8,
+		fontSize: 16,
+		marginBottom: 16,
+	},
+	button: {
+		backgroundColor: "#467FD3",
+		borderRadius: 4,
+		width: 100,
+		marginBottom: 24,
+	},
+	buttonLabel: {
+		color: "#FFFFFF",
+		paddingVertical: 12,
+		textAlign: "center",
+	},
+	footer: {
+		flexDirection: "row",
+	},
+	footerText: {
+		fontSize: 14,
+		lineHeight: 24,
+	},
+	footerLink: {
+		fontSize: 14,
+		lineHeight: 24,
+		color: "#467FD3",
+		marginLeft: 8,
+	},
+});
+
+export default Login;
