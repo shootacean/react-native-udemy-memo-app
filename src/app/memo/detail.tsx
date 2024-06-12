@@ -1,8 +1,8 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
-import Icon from '../../components/Icon';
 import CircleButton from "../../components/CircleButton";
 import { Header } from "../../components/Header";
+import Icon from "../../components/Icon";
 
 const Detail = () => {
 	return (
@@ -23,7 +23,7 @@ const Detail = () => {
 				</Text>
 			</ScrollView>
 			<CircleButton style={{ top: 160, right: 40, bottom: "auto" }}>
-                <Icon name="pencil" size={40} color="#FFFFFF"/>
+				<Icon name="pencil" size={40} color="#FFFFFF" />
 			</CircleButton>
 		</View>
 	);
