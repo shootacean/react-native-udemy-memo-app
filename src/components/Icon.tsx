@@ -11,7 +11,7 @@ const CustomIcon = createIconSetFromIcoMoon(
 );
 
 interface IconProps {
-	name: string;
+	name: 'pencil' | 'plus' | 'check' | 'trash';
 	size: number;
 	color: string;
 }
