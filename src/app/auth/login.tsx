@@ -6,12 +6,16 @@ import {
 	View,
 } from "react-native";
 
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 
 const Login = () => {
+	function handleSubmit(): void {
+		router.push("/memo/list");
+	}
+
 	return (
 		<View style={styles.container}>
 			<Header />
@@ -21,7 +25,7 @@ const Login = () => {
 					<TextInput style={styles.input} value="Email" />
 					<TextInput style={styles.input} value="Password" />
 				</View>
-				<Button>Log in</Button>
+				<Button onPress={handleSubmit}>Log in</Button>
 				<View style={styles.footer}>
 					<Text style={styles.footerText}>Not registered?</Text>
 					<Link href="/auth/signup" asChild={true}>

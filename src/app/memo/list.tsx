@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { StyleSheet, View } from "react-native";
 import CircleButton from "../../components/CircleButton";
 import Header from "../../components/Header";
@@ -13,7 +14,7 @@ const List = () => {
 				<MemoListItem />
 				<MemoListItem />
 			</View>
-			<CircleButton>
+			<CircleButton onPress={() => router.push("/memo/create")}>
 				<Icon name="plus" size={40} color="#FFFFFF" />
 			</CircleButton>
 		</View>

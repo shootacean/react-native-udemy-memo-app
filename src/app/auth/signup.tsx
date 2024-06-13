@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import {
 	StyleSheet,
 	Text,
@@ -11,6 +11,10 @@ import Button from "../../components/Button";
 import Header from "../../components/Header";
 
 const Login = () => {
+	function handleSubmit(): void {
+		router.push("/memo/list");
+	}
+
 	return (
 		<View style={styles.container}>
 			<Header />
@@ -20,7 +24,7 @@ const Login = () => {
 					<TextInput style={styles.input} value="Email" />
 					<TextInput style={styles.input} value="Password" />
 				</View>
-				<Button>Sign up</Button>
+				<Button onPress={handleSubmit}>Sign up</Button>
 				<View style={styles.footer}>
 					<Text style={styles.footerText}>Already registered?</Text>
 					<Link href="/auth/login" asChild={true}>

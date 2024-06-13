@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import CircleButton from "../../components/CircleButton";
@@ -22,7 +23,10 @@ const Detail = () => {
 					ダミーテキストはダミー文書やダミー文章とも呼ばれることがあります。カタカナ語が苦手な方は「組見本」と呼ぶとよいでしょう。主に書籍やウェブページなどのデザインを作成する時によく使われます。これは正式な文章の代わりに入れて使うダミーテキストです。
 				</Text>
 			</ScrollView>
-			<CircleButton style={{ top: 160, right: 40, bottom: "auto" }}>
+			<CircleButton
+				onPress={() => router.push("/memo/edit")}
+				style={{ top: 160, right: 40, bottom: "auto" }}
+			>
 				<Icon name="pencil" size={40} color="#FFFFFF" />
 			</CircleButton>
 		</View>

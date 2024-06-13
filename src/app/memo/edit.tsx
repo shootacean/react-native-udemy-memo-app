@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import {
 	KeyboardAvoidingView,
 	StyleSheet,
@@ -20,7 +21,7 @@ const Edit = () => {
 					multiline={true}
 				/>
 			</View>
-			<CircleButton>
+			<CircleButton onPress={() => router.back()}>
 				<Icon name="check" size={40} color="#ffffff" />
 			</CircleButton>
 		</KeyboardAvoidingView>

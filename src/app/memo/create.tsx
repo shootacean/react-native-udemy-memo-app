@@ -1,10 +1,10 @@
+import { router } from "expo-router";
 import {
 	KeyboardAvoidingView,
 	StyleSheet,
 	TextInput,
 	View,
 } from "react-native";
-
 import CircleButton from "../../components/CircleButton";
 import Header from "../../components/Header";
 import Icon from "../../components/Icon";
@@ -16,7 +16,7 @@ const Create = () => {
 			<View style={styles.inputContainer}>
 				<TextInput style={styles.input} multiline={true} />
 			</View>
-			<CircleButton>
+			<CircleButton onPress={() => router.back()}>
 				<Icon name="check" size={40} color="#ffffff" />
 			</CircleButton>
 		</KeyboardAvoidingView>
