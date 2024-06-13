@@ -1,6 +1,8 @@
 import "expo-router/entry";
 import { StyleSheet, Text, View } from "react-native";
 
+import Icon from "./Icon";
+
 export const MemoListItem = () => {
 	return (
 		<View style={styles.memoListItem}>
@@ -9,7 +11,9 @@ export const MemoListItem = () => {
 				<Text style={styles.memoListItemDate}>2020年12月24日 10:00</Text>
 			</View>
 			<View>
-				<Text>X</Text>
+				<Text>
+					<Icon name="delete" size={32} color="#B0B0B0" />
+				</Text>
 			</View>
 		</View>
 	);
