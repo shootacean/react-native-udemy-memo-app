@@ -6,6 +6,8 @@ import {
 	View,
 } from "react-native";
 
+import { Link } from "expo-router";
+
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 
@@ -22,9 +24,11 @@ const Login = () => {
 				<Button>Log in</Button>
 				<View style={styles.footer}>
 					<Text style={styles.footerText}>Not registered?</Text>
-					<TouchableOpacity>
-						<Text style={styles.footerLink}>Sign up here!</Text>
-					</TouchableOpacity>
+					<Link href="/auth/signup" asChild={true}>
+						<TouchableOpacity>
+							<Text style={styles.footerLink}>Sign up here!</Text>
+						</TouchableOpacity>
+					</Link>
 				</View>
 			</View>
 		</View>

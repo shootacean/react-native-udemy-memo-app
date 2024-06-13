@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import {
 	StyleSheet,
 	Text,
@@ -22,9 +23,11 @@ const Login = () => {
 				<Button>Sign up</Button>
 				<View style={styles.footer}>
 					<Text style={styles.footerText}>Already registered?</Text>
-					<TouchableOpacity>
-						<Text style={styles.footerLink}>Log in here!</Text>
-					</TouchableOpacity>
+					<Link href="/auth/login" asChild={true}>
+						<TouchableOpacity>
+							<Text style={styles.footerLink}>Log in here!</Text>
+						</TouchableOpacity>
+					</Link>
 				</View>
 			</View>
 		</View>
