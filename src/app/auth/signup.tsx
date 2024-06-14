@@ -8,16 +8,14 @@ import {
 } from "react-native";
 
 import Button from "../../components/Button";
-import Header from "../../components/Header";
 
 const Login = () => {
 	function handleSubmit(): void {
-		router.push("/memo/list");
+		router.replace("/memo/list");
 	}
 
 	return (
 		<View style={styles.container}>
-			<Header />
 			<View style={styles.inner}>
 				<View>
 					<Text style={styles.title}>Sign Up</Text>

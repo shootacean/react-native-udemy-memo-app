@@ -2,13 +2,11 @@ import { router } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import CircleButton from "../../components/CircleButton";
-import { Header } from "../../components/Header";
 import Icon from "../../components/Icon";
 
 const Detail = () => {
 	return (
 		<View style={styles.container}>
-			<Header />
 			<View style={styles.memoHeader}>
 				<Text style={styles.memoTitle}>買い物リスト</Text>
 				<Text style={styles.memoDate}>2020年12月24日 10:00</Text>
@@ -25,7 +23,7 @@ const Detail = () => {
 			</ScrollView>
 			<CircleButton
 				onPress={() => router.push("/memo/edit")}
-				style={{ top: 160, right: 40, bottom: "auto" }}
+				style={{ top: 60, right: 40, bottom: "auto" }}
 			>
 				<Icon name="pencil" size={40} color="#FFFFFF" />
 			</CircleButton>

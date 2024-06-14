@@ -1,9 +1,22 @@
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 
 const Layout = () => {
 	return (
 		<>
-			<Slot />
+			<Stack
+				screenOptions={{
+					headerStyle: {
+						backgroundColor: "#467FD3",
+					},
+					headerTintColor: "#FFFFFF",
+					headerTitle: "Memo App",
+					headerBackTitle: "Back",
+					headerTitleStyle: {
+						fontSize: 24,
+						fontWeight: "bold",
+					},
+				}}
+			/>
 		</>
 	);
 };

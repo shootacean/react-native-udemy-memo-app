@@ -1,14 +1,22 @@
-import { router } from "expo-router";
+import { router, useNavigation } from "expo-router";
+import { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import CircleButton from "../../components/CircleButton";
-import Header from "../../components/Header";
 import Icon from "../../components/Icon";
+import LogoutButton from "../../components/LogoutButton";
 import MemoListItem from "../../components/MemoListItem";
 
 const List = () => {
+	const navigation = useNavigation();
+
+	useEffect(() => {
+		navigation.setOptions({
+			headerRight: () => <LogoutButton />,
+		});
+	}, [navigation]);
+
 	return (
 		<View style={styles.container}>
-			<Header />
 			<View>
 				<MemoListItem />
 				<MemoListItem />

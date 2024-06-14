@@ -6,13 +6,11 @@ import {
 	View,
 } from "react-native";
 import CircleButton from "../../components/CircleButton";
-import Header from "../../components/Header";
 import Icon from "../../components/Icon";
 
 const Create = () => {
 	return (
 		<KeyboardAvoidingView behavior="height" style={styles.container}>
-			<Header />
 			<View style={styles.inputContainer}>
 				<TextInput style={styles.input} multiline={true} />
 			</View>
