@@ -1,4 +1,5 @@
 import { Link, router } from "expo-router";
+import { useState } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -10,6 +11,9 @@ import {
 import Button from "../../components/Button";
 
 const Login = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
 	function handleSubmit(): void {
 		router.replace("/memo/list");
 	}
@@ -19,8 +23,24 @@ const Login = () => {
 			<View style={styles.inner}>
 				<View>
 					<Text style={styles.title}>Sign Up</Text>
-					<TextInput style={styles.input} value="Email" />
-					<TextInput style={styles.input} value="Password" />
+					<TextInput
+						style={styles.input}
+						value={email}
+						onChangeText={(text) => setEmail(text)}
+						autoCapitalize="none"
+						keyboardType="email-address"
+						placeholder="Email Address"
+						textContentType="emailAddress"
+					/>
+					<TextInput
+						style={styles.input}
+						value={password}
+						onChangeText={(text) => setPassword(text)}
+						autoCapitalize="none"
+						secureTextEntry={true}
+						placeholder="Password"
+						textContentType="password"
+					/>
 				</View>
 				<Button onPress={handleSubmit}>Sign up</Button>
 				<View style={styles.footer}>
