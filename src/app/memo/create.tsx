@@ -6,7 +6,7 @@ import { auth, db } from "../../config";
 
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/Icon";
-import KeyboardAvoidingView from "../../components/KeyboardAvoidingView";
+import KeyboardAvoidingView from "../../components/KeyboardSafeView";
 
 async function handleCreate(bodyText: string) {
 	if (!auth.currentUser) {
