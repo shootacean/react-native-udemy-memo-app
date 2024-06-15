@@ -1,25 +1,47 @@
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
+import { doc, onSnapshot } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import type { Memo } from "../../../types/memo";
+import { auth, db } from "../../config";
 
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/Icon";
 
 const Detail = () => {
+	const [memo, setMemo] = useState<Memo | null>(null);
+	const { id } = useLocalSearchParams();
+
+	useEffect(() => {
+		if (auth.currentUser === null) {
+			router.replace("/auth/login");
+			return;
+		}
+		const ref = doc(db, `users/${auth.currentUser.uid}/memos`, String(id));
+		const unsubscribe = onSnapshot(ref, (memoDoc) => {
+			console.debug(memoDoc.data());
+			const { bodyText, updatedAt } = memoDoc.data() as Memo;
+			setMemo({
+				id: memoDoc.id,
+				bodyText,
+				updatedAt,
+			});
+		});
+		return unsubscribe;
+	}, [id]);
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.memoHeader}>
-				<Text style={styles.memoTitle}>買い物リスト</Text>
-				<Text style={styles.memoDate}>2020年12月24日 10:00</Text>
+				<Text style={styles.memoTitle} numberOfLines={1}>
+					{memo?.bodyText}
+				</Text>
+				<Text style={styles.memoDate}>
+					{memo?.updatedAt.toDate().toLocaleString("ja-JP")}
+				</Text>
 			</View>
 			<ScrollView>
-				<Text style={styles.memoBodyText}>
-					買い物リスト書体やレイアウトなどを確認するために用います。本文用なので使い方を間違えると不自然に見えることもありますので要注意。
-					カタカナ語が苦手な方は「組見本」と呼ぶとよいでしょう。なお、組見本の「組」とは文字組のことです。活字印刷時代の用語だったと思います。このダミーテキストは自由に改変することが出来ます。主に書籍やウェブページなどのデザインを作成する時によく使われます。書体やレイアウトなどを確認するために用います。
-					ダミーテキストはダミー文書やダミー文章とも呼ばれることがあります。カタカナ語が苦手な方は「組見本」と呼ぶとよいでしょう。主に書籍やウェブページなどのデザインを作成する時によく使われます。これは正式な文章の代わりに入れて使うダミーテキストです。
-					買い物リスト書体やレイアウトなどを確認するために用います。本文用なので使い方を間違えると不自然に見えることもありますので要注意。
-					カタカナ語が苦手な方は「組見本」と呼ぶとよいでしょう。なお、組見本の「組」とは文字組のことです。活字印刷時代の用語だったと思います。このダミーテキストは自由に改変することが出来ます。主に書籍やウェブページなどのデザインを作成する時によく使われます。書体やレイアウトなどを確認するために用います。
-					ダミーテキストはダミー文書やダミー文章とも呼ばれることがあります。カタカナ語が苦手な方は「組見本」と呼ぶとよいでしょう。主に書籍やウェブページなどのデザインを作成する時によく使われます。これは正式な文章の代わりに入れて使うダミーテキストです。
-				</Text>
+				<Text style={styles.memoBodyText}>{memo?.bodyText}</Text>
 			</ScrollView>
 			<CircleButton
 				onPress={() => router.push("/memo/edit")}

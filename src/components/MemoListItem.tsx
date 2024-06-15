@@ -17,7 +17,10 @@ export const MemoListItem = ({ memo }: MemoListItemProps) => {
 	}
 	const updatedAtString = memo.updatedAt.toDate().toLocaleString("ja-JP");
 	return (
-		<Link href="/memo/detail" asChild={true}>
+		<Link
+			href={{ pathname: "/memo/detail", params: { id: memo.id } }}
+			asChild={true}
+		>
 			<TouchableOpacity style={styles.memoListItem}>
 				<View>
 					<Text style={styles.memoListItemTitle} numberOfLines={1}>
