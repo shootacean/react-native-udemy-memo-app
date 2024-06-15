@@ -1,16 +1,12 @@
 import { router } from "expo-router";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
-import {
-	KeyboardAvoidingView,
-	StyleSheet,
-	TextInput,
-	View,
-} from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import { auth, db } from "../../config";
 
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/Icon";
+import KeyboardAvoidingView from "../../components/KeyboardAvoidingView";
 
 async function handleCreate(bodyText: string) {
 	if (!auth.currentUser) {
@@ -35,13 +31,14 @@ const Create = () => {
 	const [bodyText, setBodyText] = useState("");
 
 	return (
-		<KeyboardAvoidingView behavior="height" style={styles.container}>
+		<KeyboardAvoidingView style={styles.container}>
 			<View style={styles.inputContainer}>
 				<TextInput
 					style={styles.input}
 					multiline={true}
 					value={bodyText}
 					onChangeText={(text) => setBodyText(text)}
+					autoFocus={true}
 				/>
 			</View>
 			<CircleButton onPress={() => handleCreate(bodyText)}>
