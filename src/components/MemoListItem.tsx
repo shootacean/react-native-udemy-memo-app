@@ -2,15 +2,28 @@ import "expo-router/entry";
 import { Link } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import type { Memo } from "../../types/memo";
 import Icon from "./Icon";
 
-export const MemoListItem = () => {
+interface MemoListItemProps {
+	memo: Memo;
+}
+
+export const MemoListItem = ({ memo }: MemoListItemProps) => {
+	const { bodyText, updatedAt } = memo;
+	if (bodyText === undefined || updatedAt === undefined) {
+		console.error("Invalid memo", memo);
+		return null;
+	}
+	const updatedAtString = memo.updatedAt.toDate().toLocaleString("ja-JP");
 	return (
 		<Link href="/memo/detail" asChild={true}>
 			<TouchableOpacity style={styles.memoListItem}>
 				<View>
-					<Text style={styles.memoListItemTitle}>買い物リスト</Text>
-					<Text style={styles.memoListItemDate}>2020年12月24日 10:00</Text>
+					<Text style={styles.memoListItemTitle} numberOfLines={1}>
+						{memo.bodyText}
+					</Text>
+					<Text style={styles.memoListItemDate}>{updatedAtString}</Text>
 				</View>
 				<TouchableOpacity>
 					<Text>
