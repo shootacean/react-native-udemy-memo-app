@@ -1,9 +1,22 @@
 import { router } from "expo-router";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { signOut } from "firebase/auth";
+import { Alert, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { auth } from "../config";
+
+function handleLogout() {
+	signOut(auth)
+		.then(() => {
+			router.replace("/auth/login");
+		})
+		.catch((error) => {
+			Alert.alert("ログアウトに失敗しました");
+			console.error(error);
+		});
+}
 
 const LogoutButton = () => {
 	return (
-		<TouchableOpacity onPress={() => router.replace("/auth/login")}>
+		<TouchableOpacity onPress={handleLogout}>
 			<Text style={styles.text}>ログアウト</Text>
 		</TouchableOpacity>
 	);
