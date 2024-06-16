@@ -1,12 +1,40 @@
-import "expo-router/entry";
-import { Link } from "expo-router";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Link, router } from "expo-router";
+import { deleteDoc, doc } from "firebase/firestore";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { auth, db } from "../config";
 
 import type { Memo } from "../../types/memo";
 import Icon from "./Icon";
 
 interface MemoListItemProps {
 	memo: Memo;
+}
+
+function handleDelete(id: string): void {
+	if (auth.currentUser === null) {
+		console.error("User is not signed in.");
+		router.replace("/auth/login");
+		return;
+	}
+	const ref = doc(db, `users/${auth.currentUser?.uid}/memos`, id);
+	Alert.alert("メモを削除します", "よろしいですか？", [
+		{
+			text: "キャンセル",
+			style: "cancel",
+		},
+		{
+			text: "削除する",
+			style: "destructive",
+			onPress: async () => {
+				try {
+					await deleteDoc(ref);
+				} catch (error) {
+					console.error("Error deleting document:", error);
+					Alert.alert("Failed to delete the memo.");
+				}
+			},
+		},
+	]);
 }
 
 export const MemoListItem = ({ memo }: MemoListItemProps) => {
@@ -28,7 +56,7 @@ export const MemoListItem = ({ memo }: MemoListItemProps) => {
 					</Text>
 					<Text style={styles.memoListItemDate}>{updatedAtString}</Text>
 				</View>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={() => handleDelete(memo.id)}>
 					<Text>
 						<Icon name="delete" size={32} color="#B0B0B0" />
 					</Text>
