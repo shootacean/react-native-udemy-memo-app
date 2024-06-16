@@ -8,18 +8,21 @@ import { auth, db } from "../../config";
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/Icon";
 
+function handleToEdit(id: string): void {
+	router.push({ pathname: "/memo/edit", params: { id } });
+}
+
 const Detail = () => {
 	const [memo, setMemo] = useState<Memo | null>(null);
-	const { id } = useLocalSearchParams();
+	const id = String(useLocalSearchParams().id);
 
 	useEffect(() => {
 		if (auth.currentUser === null) {
 			router.replace("/auth/login");
 			return;
 		}
-		const ref = doc(db, `users/${auth.currentUser.uid}/memos`, String(id));
+		const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id);
 		const unsubscribe = onSnapshot(ref, (memoDoc) => {
-			console.debug(memoDoc.data());
 			const { bodyText, updatedAt } = memoDoc.data() as Memo;
 			setMemo({
 				id: memoDoc.id,
@@ -44,7 +47,7 @@ const Detail = () => {
 				<Text style={styles.memoBodyText}>{memo?.bodyText}</Text>
 			</ScrollView>
 			<CircleButton
-				onPress={() => router.push("/memo/edit")}
+				onPress={() => handleToEdit(id)}
 				style={{ top: 60, right: 40, bottom: "auto" }}
 			>
 				<Icon name="pencil" size={40} color="#FFFFFF" />
