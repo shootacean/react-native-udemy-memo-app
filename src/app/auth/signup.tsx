@@ -14,11 +14,10 @@ import Button from "../../components/Button";
 import { auth } from "../../config";
 
 function handleSubmit(email: string, password: string): void {
-	console.debug("Sign up", email, password);
 	createUserWithEmailAndPassword(auth, email, password)
 		.then((userCredential) => {
 			const user = userCredential.user;
-			console.debug("Signed up", user.uid);
+			console.info("Signed up", user.uid);
 			router.replace("/memo/list");
 		})
 		.catch((error) => {

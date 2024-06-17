@@ -15,11 +15,10 @@ import { auth } from "../../config";
 import Button from "../../components/Button";
 
 function handleSubmit(email: string, password: string): void {
-	console.debug("Log in", email, password);
 	signInWithEmailAndPassword(auth, email, password)
 		.then((userCredential) => {
 			const user = userCredential.user;
-			console.debug("Logged in", user.uid);
+			console.info("Logged in", user.uid);
 			router.replace("/memo/list");
 		})
 		.catch((error) => {
