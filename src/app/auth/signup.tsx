@@ -35,14 +35,14 @@ const Login = () => {
 		<View style={styles.container}>
 			<View style={styles.inner}>
 				<View>
-					<Text style={styles.title}>Sign Up</Text>
+					<Text style={styles.title}>会員登録</Text>
 					<TextInput
 						style={styles.input}
 						value={email}
 						onChangeText={(text) => setEmail(text)}
 						autoCapitalize="none"
 						keyboardType="email-address"
-						placeholder="Email Address"
+						placeholder="メールアドレス"
 						textContentType="emailAddress"
 					/>
 					<TextInput
@@ -51,16 +51,15 @@ const Login = () => {
 						onChangeText={(text) => setPassword(text)}
 						autoCapitalize="none"
 						secureTextEntry={true}
-						placeholder="Password"
+						placeholder="パスワード"
 						textContentType="password"
 					/>
 				</View>
-				<Button onPress={() => handleSubmit(email, password)}>Sign up</Button>
+				<Button onPress={() => handleSubmit(email, password)}>会員登録</Button>
 				<View style={styles.footer}>
-					<Text style={styles.footerText}>Already registered?</Text>
 					<Link href="/auth/login" asChild={true} replace={true}>
 						<TouchableOpacity>
-							<Text style={styles.footerLink}>Log in here!</Text>
+							<Text style={styles.footerLink}>会員登録済みの方はこちら</Text>
 						</TouchableOpacity>
 					</Link>
 				</View>
@@ -94,10 +93,6 @@ const styles = StyleSheet.create({
 	},
 	footer: {
 		flexDirection: "row",
-	},
-	footerText: {
-		fontSize: 14,
-		lineHeight: 24,
 	},
 	footerLink: {
 		fontSize: 14,
