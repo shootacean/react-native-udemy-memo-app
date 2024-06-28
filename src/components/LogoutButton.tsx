@@ -2,6 +2,7 @@ import { router } from "expo-router";
 import { signOut } from "firebase/auth";
 import { Alert, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { auth } from "../config";
+import { theme } from "../theme";
 
 function handleLogout() {
 	signOut(auth)
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: 12,
 		lineHeight: 24,
-		color: "rgba(255, 255, 255, 0.8)",
+		color: theme.colors.secondary,
 	},
 });
 
