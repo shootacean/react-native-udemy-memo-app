@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Alert, StyleSheet, TextInput, View } from "react-native";
 import type { Memo } from "../../../types/memo";
 import { auth, db } from "../../config";
+import { theme } from "../../theme";
 
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/Icon";
@@ -56,7 +57,7 @@ const Edit = () => {
 				/>
 			</View>
 			<CircleButton onPress={() => handleSave(id, bodyText)}>
-				<Icon name="check" size={40} color="#ffffff" />
+				<Icon name="check" size={40} color={theme.colors.secondary} />
 			</CircleButton>
 		</KeyboardSafeView>
 	);

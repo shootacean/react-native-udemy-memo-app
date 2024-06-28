@@ -6,6 +6,7 @@ import {
 	TouchableOpacity,
 	type ViewStyle,
 } from "react-native";
+import { theme } from "../theme";
 
 interface CircleButtonProps {
 	children: ReactNode;
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
 		width: 64,
 		height: 64,
 		borderRadius: 64 / 2,
-		backgroundColor: "#467FD3",
+		backgroundColor: theme.colors.primary,
 		justifyContent: "center",
 		alignItems: "center",
 		position: "absolute",
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
 		elevation: 8,
 	},
 	circleButtonLabel: {
-		color: "#FFFFFF",
+		color: theme.colors.secondary,
 		fontSize: 40,
 		lineHeight: 40,
 	},

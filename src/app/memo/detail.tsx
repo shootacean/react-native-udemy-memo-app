@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import type { Memo } from "../../../types/memo";
 import { auth, db } from "../../config";
+import { theme } from "../../theme";
 
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/Icon";
@@ -50,7 +51,7 @@ const Detail = () => {
 				onPress={() => handleToEdit(id)}
 				style={{ top: 60, right: 40, bottom: "auto" }}
 			>
-				<Icon name="pencil" size={40} color="#FFFFFF" />
+				<Icon name="pencil" size={40} color={theme.colors.secondary} />
 			</CircleButton>
 		</View>
 	);
@@ -61,20 +62,20 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	memoHeader: {
-		backgroundColor: "#467FD3",
+		backgroundColor: theme.colors.primary,
 		height: 96,
 		justifyContent: "center",
 		paddingVertical: 24,
 		paddingHorizontal: 19,
 	},
 	memoTitle: {
-		color: "#FFFFFF",
+		color: theme.colors.secondary,
 		fontSize: 20,
 		lineHeight: 32,
 		fontWeight: "bold",
 	},
 	memoDate: {
-		color: "#FFFFFF",
+		color: theme.colors.secondary,
 		fontSize: 12,
 		lineHeight: 16,
 	},

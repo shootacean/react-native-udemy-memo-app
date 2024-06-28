@@ -8,6 +8,7 @@ import Icon from "../../components/Icon";
 import LogoutButton from "../../components/LogoutButton";
 import MemoListItem from "../../components/MemoListItem";
 import { auth, db } from "../../config";
+import { theme } from "../../theme";
 
 const List = () => {
 	const navigation = useNavigation();
@@ -49,7 +50,7 @@ const List = () => {
 				// keyExtractor={(item) => item.id}
 			/>
 			<CircleButton onPress={() => router.push("/memo/create")}>
-				<Icon name="plus" size={40} color="#FFFFFF" />
+				<Icon name="plus" size={40} color={theme.colors.secondary} />
 			</CircleButton>
 		</View>
 	);
@@ -58,7 +59,7 @@ const List = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#FFFFFF",
+		backgroundColor: theme.colors.background,
 	},
 });
 

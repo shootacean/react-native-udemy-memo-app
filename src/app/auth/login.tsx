@@ -11,6 +11,7 @@ import {
 import { Link, router } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config";
+import { theme } from "../../theme";
 
 import Button from "../../components/Button";
 
@@ -84,8 +85,8 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		borderWidth: 1,
-		borderColor: "#DDDDDD",
-		backgroundColor: "#FFFFFF",
+		borderColor: theme.colors.borderColor,
+		backgroundColor: theme.colors.background,
 		height: 48,
 		padding: 8,
 		fontSize: 16,
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
 	footerLink: {
 		fontSize: 14,
 		lineHeight: 24,
-		color: "#467FD3",
+		color: theme.colors.secondary,
 		marginLeft: 8,
 	},
 });

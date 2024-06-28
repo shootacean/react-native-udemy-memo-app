@@ -4,6 +4,7 @@ import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { auth, db } from "../config";
 
 import type { Memo } from "../../types/memo";
+import { theme } from "../theme";
 import Icon from "./Icon";
 
 interface MemoListItemProps {
@@ -68,7 +69,7 @@ export const MemoListItem = ({ memo }: MemoListItemProps) => {
 
 const styles = StyleSheet.create({
 	memoListItem: {
-		backgroundColor: "#FFFFFF",
+		backgroundColor: theme.colors.background,
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",

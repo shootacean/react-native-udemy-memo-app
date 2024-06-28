@@ -3,6 +3,7 @@ import { Timestamp, addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import { auth, db } from "../../config";
+import { theme } from "../../theme";
 
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/Icon";
@@ -42,7 +43,7 @@ const Create = () => {
 				/>
 			</View>
 			<CircleButton onPress={() => handleCreate(bodyText)}>
-				<Icon name="check" size={40} color="#ffffff" />
+				<Icon name="check" size={40} color={theme.colors.secondary} />
 			</CircleButton>
 		</KeyboardAvoidingView>
 	);

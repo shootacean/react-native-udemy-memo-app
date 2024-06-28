@@ -1,4 +1,5 @@
 import { Stack } from "expo-router";
+import { theme } from "../theme";
 
 const Layout = () => {
 	return (
@@ -6,10 +7,10 @@ const Layout = () => {
 			<Stack
 				screenOptions={{
 					headerStyle: {
-						backgroundColor: "#467FD3",
+						backgroundColor: theme.colors.primary,
 					},
-					headerTintColor: "#FFFFFF",
-					headerTitle: "Memo App",
+					headerTintColor: theme.colors.secondary,
+					headerTitle: "ひらめきメモ",
 					headerBackTitle: "Back",
 					headerTitleStyle: {
 						fontSize: 24,

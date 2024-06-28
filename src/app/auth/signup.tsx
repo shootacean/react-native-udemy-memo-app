@@ -12,6 +12,7 @@ import {
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Button from "../../components/Button";
 import { auth } from "../../config";
+import { theme } from "../../theme";
 
 function handleSubmit(email: string, password: string): void {
 	createUserWithEmailAndPassword(auth, email, password)
@@ -83,8 +84,8 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		borderWidth: 1,
-		borderColor: "#DDDDDD",
-		backgroundColor: "#FFFFFF",
+		borderColor: theme.colors.borderColor,
+		backgroundColor: theme.colors.background,
 		height: 48,
 		padding: 8,
 		fontSize: 16,
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
 	footerLink: {
 		fontSize: 14,
 		lineHeight: 24,
-		color: "#467FD3",
+		color: theme.colors.secondary,
 		marginLeft: 8,
 	},
 });

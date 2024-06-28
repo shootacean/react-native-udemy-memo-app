@@ -1,4 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { theme } from "../theme";
 
 interface ButtonProps {
 	children: string;
@@ -15,13 +16,13 @@ const Button = ({ children, onPress }: ButtonProps) => {
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: "#467FD3",
+		backgroundColor: theme.colors.primary,
 		borderRadius: 4,
 		width: 100,
 		marginBottom: 24,
 	},
 	buttonLabel: {
-		color: "#FFFFFF",
+		color: theme.colors.secondary,
 		paddingVertical: 12,
 		textAlign: "center",
 	},
