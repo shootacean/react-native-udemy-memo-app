@@ -63,6 +63,13 @@ const Login = () => {
 							<Text style={styles.footerLink}>会員登録がまだの方はこちら</Text>
 						</TouchableOpacity>
 					</Link>
+					<Link href="/auth/password-reset" asChild={true}>
+						<TouchableOpacity>
+							<Text style={styles.footerLink}>
+								パスワードを忘れた方はこちら
+							</Text>
+						</TouchableOpacity>
+					</Link>
 				</View>
 			</View>
 		</View>
