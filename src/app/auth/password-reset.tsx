@@ -36,7 +36,9 @@ export const PasswordReset = () => {
 						textContentType="emailAddress"
 					/>
 				</View>
-				<Button onPress={() => handlePasswordReset(email)}>リセット</Button>
+				<View style={styles.buttonArea}>
+					<Button onPress={() => handlePasswordReset(email)}>リセット</Button>
+				</View>
 			</View>
 		</View>
 	);
@@ -64,6 +66,9 @@ const styles = StyleSheet.create({
 		padding: 8,
 		fontSize: 16,
 		marginBottom: 16,
+	},
+	buttonArea: {
+		alignItems: "flex-end",
 	},
 });
 

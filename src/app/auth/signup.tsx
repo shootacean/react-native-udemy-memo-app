@@ -75,7 +75,11 @@ const Login = () => {
 						textContentType="password"
 					/>
 				</View>
-				<Button onPress={() => handleSignUp(email, password)}>会員登録</Button>
+				<View style={styles.buttonArea}>
+					<Button onPress={() => handleSignUp(email, password)}>
+						会員登録
+					</Button>
+				</View>
 				<View style={styles.footer}>
 					<Link href="/auth/login" asChild={true} replace={true}>
 						<TouchableOpacity>
@@ -115,6 +119,9 @@ const styles = StyleSheet.create({
 		padding: 8,
 		fontSize: 16,
 		marginBottom: 16,
+	},
+	buttonArea: {
+		alignItems: "flex-end",
 	},
 	footer: {
 		flexDirection: "row",
