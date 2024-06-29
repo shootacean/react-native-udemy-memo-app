@@ -15,17 +15,21 @@ import { theme } from "../../theme";
 
 import Button from "../../components/Button";
 
-function handleSubmit(email: string, password: string): void {
-	signInWithEmailAndPassword(auth, email, password)
-		.then((userCredential) => {
-			const user = userCredential.user;
-			console.info("Logged in", user.uid);
-			router.replace("/memo/list");
-		})
-		.catch((error) => {
-			console.error("Failed to log in", error);
-			Alert.alert(error.message);
-		});
+async function handleLogin(email: string, password: string): Promise<void> {
+	try {
+		const userCredential = await signInWithEmailAndPassword(
+			auth,
+			email,
+			password,
+		);
+		const user = userCredential.user;
+		console.info("Logged in", user.uid);
+		router.replace("/memo/list");
+	} catch (e) {
+		const error = e as Error;
+		console.error("Failed to log in", error);
+		Alert.alert(error.message);
+	}
 }
 
 const Login = () => {
@@ -56,13 +60,15 @@ const Login = () => {
 						textContentType="password"
 					/>
 				</View>
-				<Button onPress={() => handleSubmit(email, password)}>ログイン</Button>
+				<Button onPress={() => handleLogin(email, password)}>ログイン</Button>
 				<View style={styles.footer}>
 					<Link href="/auth/signup" asChild={true} replace={true}>
 						<TouchableOpacity>
 							<Text style={styles.footerLink}>会員登録がまだの方はこちら</Text>
 						</TouchableOpacity>
 					</Link>
+				</View>
+				<View style={styles.footer}>
 					<Link href="/auth/password-reset" asChild={true}>
 						<TouchableOpacity>
 							<Text style={styles.footerLink}>
