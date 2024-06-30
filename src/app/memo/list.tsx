@@ -5,8 +5,8 @@ import { FlatList, StyleSheet, View } from "react-native";
 import type { Memo } from "../../../types/memo";
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/Icon";
-import LogoutButton from "../../components/LogoutButton";
 import MemoListItem from "../../components/MemoListItem";
+import SettingButton from "../../components/SettingButton";
 import { auth, db } from "../../config";
 import { theme } from "../../theme";
 
@@ -16,7 +16,7 @@ const List = () => {
 
 	useEffect(() => {
 		navigation.setOptions({
-			headerRight: () => <LogoutButton />,
+			headerRight: () => <SettingButton />,
 		});
 	}, [navigation]);
 

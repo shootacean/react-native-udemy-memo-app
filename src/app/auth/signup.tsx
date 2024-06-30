@@ -1,5 +1,5 @@
 import { Link, router } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
 	Alert,
 	StyleSheet,
@@ -10,7 +10,11 @@ import {
 } from "react-native";
 
 import {
+	EmailAuthProvider,
+	type UserCredential,
 	createUserWithEmailAndPassword,
+	linkWithCredential,
+	onAuthStateChanged,
 	signInAnonymously,
 } from "firebase/auth";
 import Button from "../../components/Button";
@@ -19,13 +23,21 @@ import { theme } from "../../theme";
 
 async function handleSignUp(email: string, password: string): Promise<void> {
 	try {
-		const userCredential = await createUserWithEmailAndPassword(
-			auth,
-			email,
-			password,
-		);
-		const user = userCredential.user;
-		console.info("Signed up", user.uid);
+		const user = auth.currentUser;
+		let userCredential: UserCredential;
+		// 匿名ログインの場合はユーザーをリンクする
+		if (user?.isAnonymous) {
+			const emailCredential = EmailAuthProvider.credential(email, password);
+			userCredential = await linkWithCredential(user, emailCredential);
+		} else {
+			// 未ログインの場合はユーザーを作成する
+			userCredential = await createUserWithEmailAndPassword(
+				auth,
+				email,
+				password,
+			);
+		}
+		console.info("Signed up", userCredential.user.uid);
 		router.replace("/memo/list");
 	} catch (e) {
 		const error = e as Error;
@@ -50,6 +62,20 @@ async function handleGuestLogin(): Promise<void> {
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [isAnonymous, setIsAnonymous] = useState<boolean | undefined>(
+		undefined,
+	);
+
+	// ログイン種類
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, (user) => {
+			if (user) {
+				console.debug(user.isAnonymous);
+				setIsAnonymous(user.isAnonymous);
+			}
+		});
+		return () => unsubscribe();
+	}, []);
 
 	return (
 		<View style={styles.container}>
@@ -80,18 +106,22 @@ const Login = () => {
 						会員登録
 					</Button>
 				</View>
-				<View style={styles.footer}>
-					<Link href="/auth/login" asChild={true} replace={true}>
-						<TouchableOpacity>
-							<Text style={styles.footerLink}>会員登録済みの方はこちら</Text>
+				{(isAnonymous === undefined || isAnonymous === false) && (
+					<View style={styles.footer}>
+						<Link href="/auth/login" asChild={true} replace={true}>
+							<TouchableOpacity>
+								<Text style={styles.footerLink}>会員登録済みの方はこちら</Text>
+							</TouchableOpacity>
+						</Link>
+					</View>
+				)}
+				{(isAnonymous === undefined || isAnonymous === false) && (
+					<View style={styles.footer}>
+						<TouchableOpacity onPress={handleGuestLogin}>
+							<Text style={styles.footerLink}>会員登録せずに利用する</Text>
 						</TouchableOpacity>
-					</Link>
-				</View>
-				<View style={styles.footer}>
-					<TouchableOpacity onPress={handleGuestLogin}>
-						<Text style={styles.footerLink}>会員登録せずに利用する</Text>
-					</TouchableOpacity>
-				</View>
+					</View>
+				)}
 			</View>
 		</View>
 	);
