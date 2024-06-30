@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
 		lineHeight: 32,
 		fontWeight: "bold",
 		marginBottom: 24,
+		color: theme.colors.secondary,
 	},
 	input: {
 		borderWidth: 1,
@@ -125,6 +126,7 @@ const styles = StyleSheet.create({
 	},
 	footer: {
 		flexDirection: "row",
+		justifyContent: "flex-end",
 	},
 	footerLink: {
 		fontSize: 14,

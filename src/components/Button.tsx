@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
 		color: theme.colors.secondary,
 		paddingVertical: 12,
 		textAlign: "center",
+		fontWeight: "bold",
 	},
 });
 
